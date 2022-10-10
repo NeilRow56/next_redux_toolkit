@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import PostsList from '../components/PostsList'
+import AddPostForm from '../components/AddPostForm'
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <main className='container max-w-[700px] mx-auto bg-gray-800 text-whites h-screen p-10 pt-10'>
         
         <PostsList />
+        <AddPostForm />
       </main>
 
       
