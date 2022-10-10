@@ -15,7 +15,7 @@ const PostsList = () => {
     ))
   return (
     <section className='items-center mx-auto'>
-        <h2 className='text-4xl font bold text-gray-200'>Posts</h2>
+        <h2 className='text-4xl font bold text-orange-600'>Posts</h2>
         {renderedPosts}
     </section>
     

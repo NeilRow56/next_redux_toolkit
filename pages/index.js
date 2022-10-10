@@ -13,9 +13,9 @@ export default function Home() {
       </Head>
 
       <main className='container max-w-[700px] mx-auto bg-gray-800 text-whites h-screen p-10 pt-10'>
-        
+      <AddPostForm />
         <PostsList />
-        <AddPostForm />
+        
       </main>
 
       
