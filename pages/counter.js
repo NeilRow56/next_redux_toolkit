@@ -5,7 +5,7 @@ import {
         increment,
         reset,
         incrementByAmount
-      } from '../redux/counterSlice'
+      } from '../redux/features/counterSlice'
 
 
 export default function Counter() {
