@@ -13,16 +13,24 @@ export const counterSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.count += 5
+      state.count += 1
     },
     decrement: (state) => {
-      state.count -= 5
+      state.count -= 1
    
-  }
+    },
+
+    reset: (state) => {
+      state.count = 0
+    },
+    incrementByAmount: (state, action ) => {
+      state.count += action.payload;
+    },
+
 }
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement } = counterSlice.actions
+export const { increment, decrement, reset, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer
