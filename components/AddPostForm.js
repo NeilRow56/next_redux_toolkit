@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 // nanoid generates a randon id
 
 import { postAdded } from '../redux/features/postsSlice'
+import { selectAllUsers } from "../redux/features/usersSlice"
 
 const AddPostForm = () => {
 
@@ -13,18 +14,34 @@ const AddPostForm = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
+    const [userId, setUserId] = useState('')
+
+    const users = useSelector( selectAllUsers )
+
     const onTitleChanged = e => setTitle(e.target.value)
     const onContentChanged = e => setContent(e.target.value)
+
+    const onAuthorChanged = e => setUserId(e.target.value)
 
     const onSavePostClicked = () => {
         if (title && content) {
             dispatch(
-                postAdded(title, content)
+                postAdded(title, content, userId)
             )
             setTitle('')
             setContent('')
         }
     }
+
+    const canSave = Boolean(title) && Boolean(content) && Boolean(userId)
+
+    
+
+    const usersOptions = users.map(user => (
+        <option key={user.id} value={user.id}>
+            {user.name}
+        </option>
+    ))
 
 
   return (
@@ -43,6 +60,15 @@ const AddPostForm = () => {
                     onChange={onTitleChanged}
                 />
                 </div>
+                <div className='flex flex-col'>
+                <label htmlFor="postAuthor">Author:</label>
+                <select
+                    className='text-gray-800'
+                 id="postAuthor" value={userId} onChange={onAuthorChanged}>
+                    <option value=""></option>
+                    {usersOptions}
+                </select>
+                </div>
                 
                 <div className='flex flex-col'>
                 <label htmlFor="postContent">Content:</label>
@@ -56,14 +82,16 @@ const AddPostForm = () => {
                 </div>
                 <div>
                 <button
+                disabled={!canSave}
+                type="button"
                 onClick={onSavePostClicked}
-                
+                           
 
-                className='bg-green-100 rounded-md
-                     px-2 py-1 text-blue-400'
-                    type="button"
+                className='px-8 py-3 text-white bg-blue-400 rounded focus:outline-none disabled:opacity-75'
                     
-                >Save Post</button>
+                >    
+                    
+                Save Post</button>
                 </div>
                 </div>
                 
