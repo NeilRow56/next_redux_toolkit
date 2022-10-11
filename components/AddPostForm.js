@@ -87,7 +87,7 @@ const AddPostForm = () => {
                 onClick={onSavePostClicked}
                            
 
-                className='px-8 py-3 text-white bg-blue-400 rounded focus:outline-none disabled:opacity-75'
+                className='px-8 py-3 text-white bg-blue-400 rounded focus:outline-none disabled:opacity-50'
                     
                 >    
                     

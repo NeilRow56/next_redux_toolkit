@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className='container max-w-[700px] mx-auto bg-gray-800 text-whites h-screen p-10 pt-10'>
+      <main className='container max-w-[700px] mx-auto bg-gray-800 text-whites  p-10 pt-10'>
       <AddPostForm />
         <PostsList />
         
