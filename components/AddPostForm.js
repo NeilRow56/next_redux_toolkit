@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { nanoid } from "@reduxjs/toolkit"
+
 
 // nanoid generates a randon id
 
 import { postAdded } from '../redux/features/postsSlice'
 
 const AddPostForm = () => {
+
+    const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
@@ -17,7 +19,7 @@ const AddPostForm = () => {
     const onSavePostClicked = () => {
         if (title && content) {
             dispatch(
-                postAdded({id: nanoid(),title, content})
+                postAdded(title, content)
             )
             setTitle('')
             setContent('')
@@ -28,11 +30,12 @@ const AddPostForm = () => {
   return (
     <section className='text-gray-200 border border-blue-400 rounded-md p-3 mt-2 mb-8'>
             <h2 className='text-blue-400 text-2xl font-bold mb-3'>Add a New Post</h2>
-            <form>
+            <form >
                 <div className='flex flex-col space-y-4'>
                 <div className='flex flex-col'>
                 <label htmlFor="postTitle">Post Title:</label>
                 <input
+                className='text-gray-800 pl-2'
                     type="text"
                     id="postTitle"
                     name="postTitle"
@@ -44,6 +47,7 @@ const AddPostForm = () => {
                 <div className='flex flex-col'>
                 <label htmlFor="postContent">Content:</label>
                 <textarea
+                className='text-gray-800 pl-2'
                     id="postContent"
                     name="postContent"
                     value={content}
